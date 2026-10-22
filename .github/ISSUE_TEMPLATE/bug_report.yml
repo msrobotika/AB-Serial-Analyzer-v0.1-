@@ -1,0 +1,21 @@
+name: "Error reproducible"
+description: "Informar un defecto con pasos y evidencia"
+title: "[bug] "
+body:
+  - type: input
+    id: env
+    attributes:
+      label: Versión / entorno
+      placeholder: "commit, OS y equipo"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos, resultado esperado y resultado obtenido
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Evidencia sin secretos, datos personales ni credenciales

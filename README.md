@@ -1,10 +1,15 @@
 # AB-Serial Analyzer · MS ROBOTIKA
 
+> **Ficha del proyecto · MS ROBOTIKA**  
+> **Área:** Diagnóstico de comunicaciones serie · **Estado:** v0.1 · laboratorio y recepción opcional de hardware  
+> **Evidencia:** [CI y pruebas](https://github.com/msrobotika/AB-Serial-Analyzer-v0.1-/actions) · [Capturas](docs/screenshots/) · [Estado técnico](docs/PROJECT_STATUS.md)  
+> **Límite:** La captura RS-485 real y su precisión temporal necesitan pruebas con adaptadores físicos.
+
 **v0.1.0 · MIT · Windows/Linux · español · recepción de diagnóstico**
 
 Analizador serie y Modbus RTU con motor propio CRC16, monitor hexadecimal, tráfico de demostración, decodificación de funciones y errores, gráficos, filtros, exportación CSV y JSON y captura RX opcional mediante pySerial.
 
-**Repositorio independiente de MS ROBOTIKA**. Esta copia se encuentra actualmente configurada como privada; para distribuirla como open source deberá hacerse pública desde los ajustes de GitHub.
+**Repositorio independiente de MS ROBOTIKA**. Este repositorio ya es público; el código y las capturas están disponibles sin conexión a la cuenta.
 
 ## Capturas reales (laboratorio Modbus RTU)
 
