@@ -43,7 +43,15 @@ $('start').addEventListener('click',async()=>{
  }catch(e){message(e.message,true);working=false;}
 });
 $('stop').addEventListener('click',async()=>{try{await api('/api/stop',{});message('Captura detenida. Los registros siguen disponibles para exportar.');await refresh();}catch(e){message(e.message,true);}});
-$('clear').addEventListener('click',async()=>{try{await api('/api/clear',{});selected=null;lastSeq=-1;await refresh();message('Historial de sesión vaciado.');}catch(e){message(e.message,true);}});
+$('clear').addEventListener('click',async()=>{if(events.length&&!window.confirm('¿Vaciar las tramas registradas? La captura continuará si está activa. Exporta los datos antes si los necesitas.'))return;try{await api('/api/clear',{});selected=null;lastSeq=-1;await refresh();message('Tramas vaciadas. La captura no se ha interrumpido.');}catch(e){message(e.message,true);}});
+$('reset-view').addEventListener('click',()=>{$('filter').value='all';$('search').value='';selected=null;renderTable();renderDetails();message('Vista restaurada: sin filtros y sin trama seleccionada. No se han borrado datos.');});
+$('new-session').addEventListener('click',async()=>{
+ if(!window.confirm('¿Iniciar una sesión desde cero? Se detendrá la captura activa y se borrarán las tramas no exportadas. Los ajustes del puerto no se eliminarán.'))return;
+ $('new-session').disabled=true;
+ try{await api('/api/stop',{});await api('/api/clear',{});working=false;selected=null;lastSeq=-1;$('filter').value='all';$('search').value='';$('authorized').checked=false;await refresh();renderTable();renderDetails();message('Sesión reiniciada: captura detenida, contadores y tramas a cero. Configuración conservada.');}
+ catch(error){message('No se ha completado la puesta a cero: '+error.message,true);}
+ finally{$('new-session').disabled=false;}
+});
 for(const name of ['filter','search'])$(name).addEventListener('input',renderTable);
 function filterEvents(){const filter=$('filter').value,search=$('search').value.trim().toLowerCase();
  return events.filter(r=>(filter==='all'||(filter==='valid'?r.valid:!r.valid)) && (!search||[r.hex,r.detail,r.function_name,r.kind,String(r.unit??'')].some(x=>String(x||'').toLowerCase().includes(search))));}

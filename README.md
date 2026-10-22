@@ -25,6 +25,10 @@ Capturas de [GitHub Actions](.github/workflows/serial-ci.yml), ejecutando el ser
 
 ![AB-Serial Analyzer en móvil](docs/screenshots/serial-movil.png)
 
+## Controles de reinicio de la demo
+
+**Reiniciar vista** restablece filtros, búsqueda y selección **sin borrar tramas**. **Vaciar tramas** borra solo el historial tras confirmación y no detiene una captura activa. **Puesta a cero de sesión** solicita confirmación, detiene la adquisición, borra los eventos y contadores y deja la conexión cerrada; los ajustes del puerto se conservan. Nunca se borra información sin distinguir estas operaciones.
+
 ## Descargar y ejecutar
 
 [**Descargar proyecto en ZIP**](https://github.com/msrobotika/AB-Serial-Analyzer-v0.1-/archive/refs/heads/main.zip)
